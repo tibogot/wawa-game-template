@@ -44,9 +44,8 @@ export const useActiveMap = (
       mapProps.characterVelocity = characterVelocity;
     }
 
-    if (activeDefinition.requiresTerrainReadyCallback) {
-      mapProps.onTerrainReady = onTerrainReady;
-    }
+    // Always pass onTerrainReady to ALL maps to ensure terrain physics are ready before character spawns
+    mapProps.onTerrainReady = onTerrainReady;
 
     if (activeDefinition.supportsTeleport) {
       mapProps.onTeleportRequest = onTeleportRequest;

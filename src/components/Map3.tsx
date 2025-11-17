@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useRef } from "react";
+import React, { useMemo, useState, useCallback, useRef, useEffect } from "react";
 import { useControls } from "leva";
 import { HeightMapUnreal } from "./HeightMapUnreal";
 import { HeightFog } from "./HeightFog";
@@ -10,6 +10,7 @@ export const Map3 = ({
   position = [0, 0, 0] as [number, number, number],
   characterPosition,
   characterVelocity,
+  onTerrainReady,
   ...props
 }: any) => {
   // State to hold the heightmap lookup function from HeightMapUnreal (SAME pattern as Map5!)
@@ -45,6 +46,17 @@ export const Map3 = ({
     useHeightFogControls();
 
   const terrainMeshRef = useRef<THREE.Mesh>(null!);
+
+  // Call onTerrainReady after terrain physics are initialized
+  useEffect(() => {
+    if (onTerrainReady) {
+      // Delay to ensure HeightMapUnreal RigidBody physics are fully initialized
+      const timer = setTimeout(() => {
+        onTerrainReady();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [onTerrainReady]);
 
   return (
     <group>

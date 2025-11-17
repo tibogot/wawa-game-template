@@ -161,8 +161,8 @@ export const Experience = () => {
       return;
     }
 
-    const requiresTerrainReady = activeMap.requiresTerrainReadyCallback;
-    setIsTerrainReady(requiresTerrainReady ? false : true);
+    // Always wait for terrain ready - ALL maps must call onTerrainReady before character spawns
+    setIsTerrainReady(false);
 
     setCharacterSpawnPosition(activeMap.spawnPosition);
   }, [map, activeMap]);

@@ -15,7 +15,7 @@ import * as THREE from "three";
 import { TileMaterial } from "./TileMaterial";
 import { TILE_REFERENCE_SCALE, TILE_DENSITY } from "./tileMaterialConfig";
 
-export const Map1 = ({
+export const Map18 = ({
   scale = 1,
   position = [0, 0, 0],
   characterPosition,
@@ -118,7 +118,7 @@ export const Map1 = ({
     flareDistance,
   } = useLensFlareControls();
 
-  // Get Map1 controls
+  // Get Map18 controls
   const {
     skyboxEnabled,
     horizonSkyEnabled,
@@ -127,7 +127,7 @@ export const Map1 = ({
     horizonSkyOffset,
     horizonSkyExponent,
     horizonSkyRadius,
-  } = useControls("🗺️ MAP 1", {
+  } = useControls("🗺️ MAP 18", {
     skybox: folder(
       {
         skyboxEnabled: {
@@ -398,3 +398,4 @@ export const Map1 = ({
     </group>
   );
 };
+

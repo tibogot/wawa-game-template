@@ -6,6 +6,7 @@ export const Map7 = ({
   position = [0, 0, 0],
   characterPosition,
   characterVelocity,
+  onTerrainReady,
   ...props
 }) => {
   const group = useRef<THREE.Group>(null);
@@ -36,6 +37,17 @@ export const Map7 = ({
       return 0; // Fallback if lookup not ready
     };
   }, [heightmapLookup]);
+
+  // Call onTerrainReady after terrain physics are initialized
+  useEffect(() => {
+    if (onTerrainReady) {
+      // Delay to ensure ProceduralTerrain2 physics are fully initialized
+      const timer = setTimeout(() => {
+        onTerrainReady();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [onTerrainReady]);
 
   return (
     <group ref={group} {...props}>
