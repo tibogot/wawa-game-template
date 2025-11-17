@@ -7,12 +7,10 @@ import { Map6 } from "./Map6";
 import { Map7 } from "./Map7";
 import { Map8 } from "./Map8";
 import { Map9 } from "./Map9";
-import { Map11 } from "./Map11";
 import { Map12 } from "./Map12";
 import { Map15 } from "./Map15";
 import { Map16 } from "./Map16";
 import { Map17 } from "./Map17";
-import { Map19 } from "./Map19";
 
 const createDefaultProps = () => ({
   scale: 1,
@@ -87,13 +85,6 @@ export const mapDefinitions = {
     requiresTerrainReadyCallback: true,
     directionalOverride: [-15, 80, 15],
   },
-  map11: {
-    component: Map11,
-    getDefaultProps: createDefaultProps,
-    getCharacterSpawn: createStaticSpawn([0, 50, 0]),
-    passCharacterData: true,
-    requiresTerrainReadyCallback: true,
-  },
   map12: {
     component: Map12,
     getDefaultProps: createDefaultProps,
@@ -120,12 +111,6 @@ export const mapDefinitions = {
     getCharacterSpawn: createStaticSpawn([0, 2, 0]),
     requiresTerrainReadyCallback: true,
     supportsTeleport: true,
-  },
-  map19: {
-    component: Map19,
-    getDefaultProps: createDefaultProps,
-    getCharacterSpawn: createStaticSpawn([0, 150, 0]),
-    requiresTerrainReadyCallback: true,
   },
 };
 
